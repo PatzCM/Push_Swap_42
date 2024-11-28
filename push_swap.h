@@ -17,5 +17,6 @@ char	**number_division(int *argc, char **argv);
 long	ft_atol(const char *str);
 long	**ft_fill_numbers(char **argv);
 int	ft_error_check(int argc, char **argv);
+t_stack	*ft_stack_init(char **numbers, int fill);
 
 #endif

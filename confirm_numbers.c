@@ -25,6 +25,7 @@ char	**number_division(int *argc, char **argv)
 	while (split_numbers[len])
 		len++;
 	*argc = len;
+	split_numbers[len] = NULL;
 	return (split_numbers);
 }
 
