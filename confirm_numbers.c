@@ -31,20 +31,23 @@ char	**number_division(int *argc, char **argv)
 
 int	ft_error_check(int argc, char **argv)
 {
-	int	errors;
 
-	errors = ft_confirm_dups(argc, argv);
-	errors = ft_confirm_numbers(argc, argv);
-	return (errors);
+	if (ft_confirm_dups(argc, argv) == -1)
+		return (-1);
+	if (ft_confirm_numbers(argc, argv) == -1)
+		return (-1);
+	return (0);
 }
 
 static int	ft_confirm_dups(int argc, char **argv)
 {
 	int	i;
 	int	j;
-
+	
+	i = 0;
 	while (argv[i] != NULL)
 	{
+		j = i + 1;
 		while (argv[j] != NULL)
 		{
 			if ((ft_atol(argv[i]) > INT_MAX) || (ft_atol(argv[j]) > INT_MAX))
@@ -64,13 +67,13 @@ static int	ft_confirm_numbers(int argc, char **argv)
 	int	j;
 
 	i = 0;
-	while (argv[i])
+	while (i < argc - 1) 
 	{
-		j = i + 1;
-		while (argv[j])
+		j = 0;
+		while (argv[i][j] != '\0')
 		{
 			if (ft_isdigit(argv[i][j]) == 0)
-				if (argv[i][j] != '-' || j != 0)
+				if (argv[i][j] != '-' && j != 0)
 					return (-1);
 			j++;
 		}

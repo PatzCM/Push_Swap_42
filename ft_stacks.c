@@ -1,26 +1,30 @@
 #include "push_swap.h"
 
-t_stack	*ft_stack_init(char **numbers, int fill)
+t_stack	*ft_stack_init(char **numbers, int fill, int argc)
 {
-	t_stack	*temp;
+	t_stack	*head = NULL;
+	t_stack	*new;
+	t_stack *current;
 	int	i;
 
-	i = 0;
+	i = -1;
 	if (fill == 0)
-	{
-		temp = malloc(sizeof(t_stack));
-		temp->content = 0;
-		temp->next = NULL;
-	}
+			head = malloc(sizeof(t_stack));
 	if (fill == 1)
 	{
-		while (numbers[i])
+		new = malloc(sizeof(t_stack));
+		new->content = (ft_atol(numbers[++i]));
+		head = new;
+		current = head;
+		while (numbers[++i])
 		{
-			temp = malloc(sizeof(t_stack) * i);
-			temp->content = (ft_atol(numbers[i]));
-			temp->next = temp;
-			i++;
+			new = new->next;
+			new = malloc(sizeof(t_stack));
+			new->content = (ft_atol(numbers[i]));
+			current->next = new;
+			current = new;
+			current->next = NULL;
 		}
 	}
-	return (temp);
+	return (head);
 }	
