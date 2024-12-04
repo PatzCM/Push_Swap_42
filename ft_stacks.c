@@ -27,4 +27,37 @@ t_stack	*ft_stack_init(char **numbers, int fill, int argc)
 		}
 	}
 	return (head);
-}	
+}
+
+void	ft_index(t_stack *a)
+{
+	t_stack *temp;
+	t_stack *head;
+	int index;
+	int max;
+	int lenght;
+
+	lenght = len(a);
+	head = a;
+	index = 0;
+
+	while (index < lenght)
+	{
+		max = 2147483647;
+		temp = head;
+		while (!temp->next)
+		{
+			if (temp->content < max)
+				max = temp->content;
+			temp = temp->next;
+		}
+		temp = head;
+		while (!temp->next)
+		{
+			if (temp->content == max)
+				temp->index = index;
+			temp = temp->next;
+		}
+		index++;
+	}
+}

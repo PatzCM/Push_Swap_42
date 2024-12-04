@@ -10,7 +10,7 @@ int	sorted(t_stack *stack)
 		if (tmp->content > tmp->next->content)
 			return (0);
 		tmp = tmp->next;
-	}
+}
 	return (1);
 }
 
@@ -108,3 +108,5 @@ void *sort_5(t_stack *a, t_stack *b, int i)
 		ft_push(a, b, 'a');
 	}
 }
+
+
