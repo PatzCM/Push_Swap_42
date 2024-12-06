@@ -48,4 +48,10 @@ void ft_rr(t_stack **stack_a, t_stack **stack_b);
 void ft_push(t_stack **stack_a, t_stack **stack_b, char c);
 void ft_reverse_rotate(t_stack **stack, char c);
 void ft_rrr(t_stack **stack_a, t_stack **stack_b);
+
+//Free
+
+
+void ft_free_stack(t_stack **stack);
+void ft_free_numbers(char **numbers);
 #endif

@@ -34,8 +34,9 @@ i = 0;
 	stack_b = ft_stack_init(numbers, 0, argc);
 	ft_index(&stack_a);
 	ft_size_choice(&stack_a, &stack_b);
-
-	ft_printf("No error\n");
+	ft_free_numbers(numbers);
+	ft_free_stack(&stack_a);
+	ft_free_stack(&stack_b);
 	while (stack_a)
 	{
 		ft_printf("%d\n", stack_a->content);

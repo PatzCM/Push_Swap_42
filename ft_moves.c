@@ -61,19 +61,20 @@ void ft_push(t_stack **stack_a, t_stack **stack_b, char c)
 
 void ft_rotate(t_stack **stack, char c)
 {
+	if (!*stack || !(*stack)->next || !stack)
+		return ;
+
 	t_stack	*temp;
 	t_stack	*head;
 
 	head = *stack;
 	temp = (*stack)->next;
 
-	if (temp->next)
-	{
-		while (temp->next)
-			temp = temp->next;
-		temp->next = head;
-		head->next = NULL;
-	}
+	while (temp->next)
+		temp = temp->next;
+	temp->next = head;
+	*stack = head->next;
+	head->next = NULL;
 	if (c == 'a')
 	{
 		ft_printf("ra\n");
