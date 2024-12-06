@@ -2,13 +2,13 @@
 // create a function that swaps the first two elements of a stack;
 // do nothing if there is only one or no elements.
 // not allowed to use -> prev
-void	ft_swap(t_stack *stack, char c)
+void	ft_swap(t_stack **stack, char c)
 {
 	t_stack	*temp;
 	t_stack	*head;
 	
-	head = stack;
-	temp = stack->next;
+	head = *stack;
+	temp = (*stack)->next;
 
 	if (temp && temp->next)
 	{
@@ -30,7 +30,7 @@ void	ft_swap(t_stack *stack, char c)
 	}
 }
 
-void ft_ss(t_stack *stack_a, t_stack *stack_b)
+void ft_ss(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_swap(stack_a, 's');
 	ft_swap(stack_b, ' ');
@@ -40,21 +40,22 @@ void ft_ss(t_stack *stack_a, t_stack *stack_b)
 // do nothing if the stack is empty.
 // not allowed to use -> prev
 
-void ft_push(t_stack *stack_a, t_stack *stack_b, char c)
+void ft_push(t_stack **stack_a, t_stack **stack_b, char c)
 {
 	t_stack	*temp;
 	t_stack	*head_a;
 	t_stack	*head_b;
-
-	temp = stack_a;
-	head_a = stack_a;
-	head_b = stack_b;
-	temp = temp->next;
+	
+	if (!stack_a)
+		return ;
+	temp = (*stack_a)->next;
+	head_a = *stack_a;
+	head_b = *stack_b;
 	if (temp->next)
 	{
 		head_a->next = head_b;
 		head_a = temp;
-		stack_a = temp;
+		*stack_a = temp;
 	}
 	if (c == 'a')
 	{
@@ -68,15 +69,14 @@ void ft_push(t_stack *stack_a, t_stack *stack_b, char c)
 
 // function that rotates the stack by shifting up all elements by 1;
 // the first element becomes the last one.
-// not allowed to use -> prev
 
-void ft_rotate(t_stack *stack, char c)
+void ft_rotate(t_stack **stack, char c)
 {
 	t_stack	*temp;
 	t_stack	*head;
 
-	head = stack;
-	temp = stack->next;
+	head = *stack;
+	temp = (*stack)->next;
 
 	if (temp->next)
 	{
@@ -99,7 +99,7 @@ void ft_rotate(t_stack *stack, char c)
 	}
 }
 
-void ft_rr(t_stack *stack_a, t_stack *stack_b)
+void ft_rr(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_rotate(stack_a, 'r');
 	ft_rotate(stack_b, ' ');
@@ -107,15 +107,14 @@ void ft_rr(t_stack *stack_a, t_stack *stack_b)
 
 // function that rotates the stack by shifting down all elements by 1; 
 // the last element becomes the first one.
-// not allowed to use -> prev
 
-void ft_reverse_rotate(t_stack *stack, char c)
+void ft_reverse_rotate(t_stack **stack, char c)
 {
 	t_stack	*temp;
 	t_stack	*head;
 
-	head = stack;
-	temp = stack->next;
+	head = *stack;
+	temp = (*stack)->next;
 
 	if (temp->next)
 	{
@@ -137,7 +136,7 @@ void ft_reverse_rotate(t_stack *stack, char c)
 		ft_printf("rrr\n");
 	}
 }
-void ft_rrr(t_stack *stack_a, t_stack *stack_b)
+void ft_rrr(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_reverse_rotate(stack_a, 'r');
 	ft_reverse_rotate(stack_b, ' ');

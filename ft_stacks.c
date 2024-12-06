@@ -31,7 +31,7 @@ t_stack	*ft_stack_init(char **numbers, int fill, int argc)
 	return (head);
 }
 
-void	ft_index(t_stack *a)
+void	ft_index(t_stack **a)
 {
 	t_stack *temp;
 	t_stack *head;
@@ -40,7 +40,7 @@ void	ft_index(t_stack *a)
 	int lenght;
 
 	lenght = len(a);
-	head = a;
+	head = *a;
 	index = 0;
 
 	while (index < lenght)
@@ -64,12 +64,12 @@ void	ft_index(t_stack *a)
 	}
 }
 
-t_stack	*get_last(t_stack *stack)
+t_stack	*get_last(t_stack **stack)
 {
 	t_stack	*temp;
 	t_stack	*smallest;
 
-	temp = stack;
+	temp = *stack;
 	while (temp->next)
 	{
 		if (temp->content < temp->next->content)
@@ -79,13 +79,13 @@ t_stack	*get_last(t_stack *stack)
 	return (smallest);
 }
 
-int len(t_stack *stack)
+int len(t_stack **stack)
 {
 	int i;
 	t_stack *temp;
 	
 	i = 0;
-	temp = stack;
+	temp = *stack;
 	while (temp->next)
 	{
 		i++;

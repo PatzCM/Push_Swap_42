@@ -32,8 +32,8 @@ i = 0;
 	}
 	stack_a = ft_stack_init(numbers, 1, argc);
 	stack_b = ft_stack_init(numbers, 0, argc);
-	ft_index(stack_a);
-	ft_size_choice(stack_a, stack_b);
+	ft_index(&stack_a);
+	ft_size_choice(&stack_a, &stack_b);
 
 	ft_printf("No error\n");
 	while (stack_a)
@@ -44,17 +44,17 @@ i = 0;
 	
 }
 
-void	ft_size_choice(t_stack *a, t_stack *b)
+void	ft_size_choice(t_stack **a, t_stack **b)
 {
 	int size;
 
 	size = len(a);
 
-	if (size == 3 && !sorted(a))
+	if (size == 3 && !sorted(*a))
 		sort_3(a);
-	else if (size == 4 && !sorted(a))
+	else if (size == 4 && !sorted(*a))
 			sort_4(a, b);
-	else if (size == 5 && !sorted(a))
+	else if (size == 5 && !sorted(*a))
 			sort_5(a, b);
 	else
 		radix_sorting(a, b);

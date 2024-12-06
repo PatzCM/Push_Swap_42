@@ -26,15 +26,15 @@ int	sorted(t_stack *stack)
 	return (1);
 }
 
-void	sort_3(t_stack *a)
+void	sort_3(t_stack **a)
 {
 	int	top;
 	int	middle;
 	int	bottom;
 
-	top = a->content;
-	middle = a->next->content;
-	bottom = a->next->next->content;
+	top = (*a)->content;
+	middle = (*a)->next->content;
+	bottom = (*a)->next->next->content;
 	if (top > bottom && bottom > middle)
 		ft_rotate(a, 'a');
 	else if (top > middle && middle > bottom)
@@ -50,19 +50,19 @@ void	sort_3(t_stack *a)
 		ft_swap(a, 'a');
 }
 
-void	sort_4(t_stack *a, t_stack *b)
+void	sort_4(t_stack **a, t_stack **b)
 {
-	if (a->next->next->next->content == (get_last(a))->content)
+	if ((*a)->next->next->next->content == (get_last(a))->content)
 	{
-		while (a->content != (get_last(a))->content)
-			ft_reverse_rotate(a, 'a');
+		while ((*a)->content != (get_last(a))->content)
+			ft_reverse_rotate((a), 'a');
 	}
 	else
 	{
-		while (a->content != (get_last(a))->content)
+		while ((*a)->content != (get_last(a))->content)
 			ft_rotate(a, 'a');
 	}
-	if (!sorted(a))
+	if (!sorted(*a))
 	{
 		ft_push(b, a, 'b');
 		sort_3(a);
@@ -70,20 +70,20 @@ void	sort_4(t_stack *a, t_stack *b)
 	}
 }
 
-void	sort_5(t_stack *a, t_stack *b)
+void	sort_5(t_stack **a, t_stack **b)
 {
-	if (a->next->next->next->next->content == (get_last(a))->content
-		|| a->next->next->next->content == (get_last(a))->content)
+	if ((*a)->next->next->next->next->content == (get_last(a))->content
+		|| (*a)->next->next->next->content == (get_last(a))->content)
 	{
-		while (a->content != (get_last(a))->content)
-			ft_reverse_rotate(a, 'a');
+		while ((*a)->content != (get_last(a))->content)
+			ft_reverse_rotate((a), 'a');
 	}
 	else
 	{
-		while (a->content != (get_last(a))->content)
+		while ((*a)->content != (get_last(a))->content)
 			ft_rotate(a, 'a');
 	}
-	if (!sorted(a))
+	if (!sorted(*a))
 	{
 		ft_push(b, a, 'b');
 		sort_4(a, b);
@@ -91,17 +91,17 @@ void	sort_5(t_stack *a, t_stack *b)
 	}
 }
 
-void	radix_sorting(t_stack	*a, t_stack	*b)
+void	radix_sorting(t_stack	**a, t_stack	**b)
 {
 	int	lenght;
 	int	bit;
 
-	while (!sorted(a))
+	while (!sorted(*a))
 	{
 		lenght = len(a);
 		while (lenght--)
 		{
-			if (a->index & 1 << bit)
+			if ((*a)->index & 1 << bit)
 				ft_rotate(a, 'a');
 			else
 				ft_push(b, a, 'b');
