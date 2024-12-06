@@ -26,10 +26,7 @@ i = 0;
 	}
 	i = 0;
 	if (ft_error_check(argc, numbers) == -1)
-	{
-		printf("Error\n");
 		return (0);
-	}
 	stack_a = ft_stack_init(numbers, 1, argc);
 	stack_b = ft_stack_init(numbers, 0, argc);
 	ft_index(&stack_a);

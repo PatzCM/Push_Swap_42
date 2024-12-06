@@ -4,7 +4,7 @@ void ft_free_stack(t_stack **stack)
 {
     t_stack *temp;
 
-    while (stack)
+    while (*stack)
     {
         temp = *stack;
         *stack = (*stack)->next;

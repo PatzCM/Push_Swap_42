@@ -1,7 +1,6 @@
 #include "push_swap.h"
 // create a function that swaps the first two elements of a stack;
 // do nothing if there is only one or no elements.
-// not allowed to use -> prev
 void	ft_swap(t_stack **stack, char c)
 {
 	t_stack	*temp;
@@ -70,11 +69,11 @@ void ft_rotate(t_stack **stack, char c)
 	head = *stack;
 	temp = (*stack)->next;
 
-	while (temp->next)
-		temp = temp->next;
-	temp->next = head;
-	*stack = head->next;
-	head->next = NULL;
+	while (head->next)
+		head = head->next;
+	head->next = *stack;
+	(*stack)->next = NULL;
+	*stack = temp;
 	if (c == 'a')
 	{
 		ft_printf("ra\n");
@@ -104,17 +103,15 @@ void ft_reverse_rotate(t_stack **stack, char c)
 	t_stack	*head;
 
 	head = *stack;
-	temp = (*stack)->next;
+	temp = *stack;
 
-	if (temp->next)
-	{
-		while (temp->next)
-		{
+		while (temp->next->next)
 			temp = temp->next;
-		}
-		temp->next = head;
-		head->next = NULL;
-	}
+		while (head->next)
+			head = head->next;
+	temp->next = *stack;
+	head->next = NULL;
+	*stack = temp;
 	if (c == 'a')
 	{
 		ft_printf("rra\n");
