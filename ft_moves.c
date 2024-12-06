@@ -43,28 +43,17 @@ void ft_ss(t_stack **stack_a, t_stack **stack_b)
 void ft_push(t_stack **stack_a, t_stack **stack_b, char c)
 {
 	t_stack	*temp;
-	t_stack	*head_a;
-	t_stack	*head_b;
 	
-	if (!stack_a)
+	if (!*stack_a)
 		return ;
-	temp = (*stack_a)->next;
-	head_a = *stack_a;
-	head_b = *stack_b;
-	if (temp->next)
-	{
-		head_a->next = head_b;
-		head_a = temp;
-		*stack_a = temp;
-	}
+	temp = *stack_a;
+	*stack_a = (*stack_a)->next;
+	temp->next = *stack_b;
+	*stack_b = temp;
 	if (c == 'a')
-	{
 		ft_printf("pa\n");
-	}
 	else if (c == 'b')
-	{
 		ft_printf("pb\n");
-	}
 }
 
 // function that rotates the stack by shifting up all elements by 1;
