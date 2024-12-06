@@ -43,6 +43,12 @@ void	ft_index(t_stack **a)
 	head = *a;
 	index = 0;
 
+	temp = head;
+	while (temp)
+	{
+		temp->index = -1;
+		temp = temp->next;
+	}
 	while (index < lenght)
 	{
 		max = 2147483647;
