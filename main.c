@@ -25,11 +25,6 @@ i = 0;
 
 	}
 	i = 0;
-	/*while (numbers[i] != NULL)*/
-	/*{*/
-	/*	ft_printf("%s\n", numbers[i]);*/
-	/*	i++;*/
-	/*}*/
 	if (ft_error_check(argc, numbers) == -1)
 	{
 		printf("Error\n");
@@ -37,6 +32,9 @@ i = 0;
 	}
 	stack_a = ft_stack_init(numbers, 1, argc);
 	stack_b = ft_stack_init(numbers, 0, argc);
+	ft_index(stack_a);
+	ft_size_choice(stack_a, stack_b);
+
 	ft_printf("No error\n");
 	while (stack_a)
 	{
@@ -44,5 +42,20 @@ i = 0;
 		stack_a = stack_a->next;
 	}
 	
+}
 
+void	ft_size_choice(t_stack *a, t_stack *b)
+{
+	int size;
+
+	size = len(a);
+
+	if (size == 3 && !sorted(a))
+		sort_3(a);
+	else if (size == 4 && !sorted(a))
+			sort_4(a, b);
+	else if (size == 5 && !sorted(a))
+			sort_5(a, b);
+	else
+		radix_sorting(a, b);
 }

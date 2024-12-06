@@ -29,13 +29,15 @@ t_stack *ft_stack_init(char **numbers, int fill, int argc);
 
 // Sorting functions
 
+void	ft_size_choice(t_stack *a, t_stack *b);
 void	ft_index(t_stack *a);
 int sorted(t_stack *stack);
-t_stack get_last(t_stack *stack);
+t_stack *get_last(t_stack *stack);
 int len(t_stack *stack);
-void *sort_3(t_stack *a);
-void *sort_4(t_stack *a, t_stack *b, int i);
-void *sort_5(t_stack *a, t_stack *b, int i);
+void sort_3(t_stack *a);
+void sort_4(t_stack *a, t_stack *b);
+void sort_5(t_stack *a, t_stack *b);
+void	radix_sorting(t_stack	*a, t_stack	*b);
 
 //Moves
 

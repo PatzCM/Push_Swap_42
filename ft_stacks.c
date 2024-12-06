@@ -14,6 +14,7 @@ t_stack	*ft_stack_init(char **numbers, int fill, int argc)
 	{
 		new = malloc(sizeof(t_stack));
 		new->content = (ft_atol(numbers[++i]));
+		new->index = -1;
 		head = new;
 		current = head;
 		while (numbers[++i])
@@ -23,6 +24,7 @@ t_stack	*ft_stack_init(char **numbers, int fill, int argc)
 			new->content = (ft_atol(numbers[i]));
 			current->next = new;
 			current = new;
+			current->index = -1;
 			current->next = NULL;
 		}
 	}
@@ -45,14 +47,14 @@ void	ft_index(t_stack *a)
 	{
 		max = 2147483647;
 		temp = head;
-		while (!temp->next)
+		while (temp->next)
 		{
-			if (temp->content < max)
+			if (temp->content < max && temp->index == -1)
 				max = temp->content;
 			temp = temp->next;
 		}
 		temp = head;
-		while (!temp->next)
+		while (temp->next)
 		{
 			if (temp->content == max)
 				temp->index = index;
@@ -60,4 +62,34 @@ void	ft_index(t_stack *a)
 		}
 		index++;
 	}
+}
+
+t_stack	*get_last(t_stack *stack)
+{
+	t_stack	*temp;
+	t_stack	*smallest;
+
+	temp = stack;
+	while (temp->next)
+	{
+		if (temp->content < temp->next->content)
+			smallest = temp;
+		temp = temp->next;
+	}
+	return (smallest);
+}
+
+int len(t_stack *stack)
+{
+	int i;
+	t_stack *temp;
+	
+	i = 0;
+	temp = stack;
+	while (temp->next)
+	{
+		i++;
+		temp = temp->next;
+	}
+	return (i);
 }

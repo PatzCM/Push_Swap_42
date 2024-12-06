@@ -46,10 +46,10 @@ void ft_push(t_stack *stack_a, t_stack *stack_b, char c)
 	t_stack	*head_a;
 	t_stack	*head_b;
 
-	temp = stack_a->next;
+	temp = stack_a;
 	head_a = stack_a;
 	head_b = stack_b;
-
+	temp = temp->next;
 	if (temp->next)
 	{
 		head_a->next = head_b;
