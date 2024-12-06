@@ -97,12 +97,11 @@ void	radix_sorting(t_stack	**a, t_stack	**b)
 	int	bit;
 
 	bit = 0;
-	while (!sorted(*a))
+	while (!sorted(*a) && bit < 32)
 	{
 		lenght = len(a);
 		while (lenght--)
 		{
-			printf("bit: %d, index: %d\n", bit, (*a)->index);
 			if ((*a)->index & 1 << bit)
 				ft_rotate(a, 'a');
 			else
