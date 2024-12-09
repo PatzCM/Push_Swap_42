@@ -1,20 +1,13 @@
-#include "push_swap.h"
+#include "../push_swap.h"
 // create a function that swaps the first two elements of a stack;
 // do nothing if there is only one or no elements.
 void	ft_swap(t_stack **stack, char c)
 {
-	t_stack	*temp;
-	t_stack	*head;
-	
-	head = *stack;
-	temp = (*stack)->next;
+	int		temp;
 
-	if (temp && temp->next)
-	{
-		head->next = temp->next;
-		temp->next = head;
-		head = temp;
-	}
+	temp = (*stack)->content;
+	(*stack)->content = (*stack)->next->content;
+	(*stack)->next->content = temp;
 	if (c == 'a')
 		ft_printf("sa\n");
 	else if (c == 'b')
@@ -69,17 +62,11 @@ void ft_rotate(t_stack **stack, char c)
 	(*stack)->next = NULL;
 	*stack = temp;
 	if (c == 'a')
-	{
 		ft_printf("ra\n");
-	}
 	else if (c == 'b')
-	{
 		ft_printf("rb\n");
-	}
 	else if (c == 'r')
-	{
 		ft_printf("rr\n");
-	}
 }
 
 void ft_rr(t_stack **stack_a, t_stack **stack_b)
@@ -107,16 +94,11 @@ void ft_reverse_rotate(t_stack **stack, char c)
 	temp->next = NULL;
 	*stack = head;
 	if (c == 'a')
-	{
 		ft_printf("rra\n");
-	}
-	else if (c == 'b'){
+	else if (c == 'b')
 		ft_printf("rrb\n");
-	}
-	else if (c == 'r'){
-		ft_printf("rrr\n");
-	}
 }
+
 void ft_rrr(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_reverse_rotate(stack_a, 'r');
