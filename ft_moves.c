@@ -109,9 +109,9 @@ void ft_reverse_rotate(t_stack **stack, char c)
 			temp = temp->next;
 		while (head->next)
 			head = head->next;
-	temp->next = *stack;
-	head->next = NULL;
-	*stack = temp;
+	head->next = *stack;
+	temp->next = NULL;
+	*stack = head;
 	if (c == 'a')
 	{
 		ft_printf("rra\n");

@@ -31,7 +31,7 @@ t_stack *ft_stack_init(char **numbers, int fill, int argc);
 
 void	ft_size_choice(t_stack **a, t_stack **b);
 void	ft_index(t_stack **a);
-int sorted(t_stack *stack);
+int sorted(t_stack **stack);
 t_stack *get_last(t_stack **stack);
 int len(t_stack **stack);
 void sort_3(t_stack **a);

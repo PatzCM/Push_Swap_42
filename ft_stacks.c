@@ -8,8 +8,8 @@ t_stack	*ft_stack_init(char **numbers, int fill, int argc)
 	int	i;
 
 	i = -1;
-	if (fill == 0)
-			head = malloc(sizeof(t_stack));
+	/*if (fill == 0)*/
+	/*		head = malloc(sizeof(t_stack));*/
 	if (fill == 1)
 	{
 		new = malloc(sizeof(t_stack));
@@ -47,14 +47,14 @@ void	ft_index(t_stack **a)
 	{
 		max = 2147483647;
 		temp = head;
-		while (temp->next)
+		while (temp)
 		{
 			if (temp->content < max && temp->index == -1)
 				max = temp->content;
 			temp = temp->next;
 		}
 		temp = head;
-		while (temp->next)
+		while (temp)
 		{
 			if (temp->content == max)
 				temp->index = index;

@@ -12,14 +12,14 @@
 
 #include "push_swap.h"
 
-int	sorted(t_stack *stack)
+int	sorted(t_stack **stack)
 {
 	t_stack	*tmp;
 
-	tmp = stack;
+	tmp = *stack;
 	while (tmp->next)
 	{
-		if (tmp->content > tmp->next->content)
+		if (tmp->index > tmp->next->index)
 			return (0);
 		tmp = tmp->next;
 	}
@@ -45,7 +45,10 @@ void	sort_3(t_stack **a)
 	else if (middle > top && top > bottom)
 		ft_reverse_rotate(a, 'a');
 	else if (middle > bottom && bottom > top)
-		ft_rotate(a, 'a');
+	{
+	ft_reverse_rotate(a, 'a');
+	ft_swap(a, 'a');
+	}
 	else if (bottom > top && top > middle)
 		ft_swap(a, 'a');
 }
@@ -62,7 +65,7 @@ void	sort_4(t_stack **a, t_stack **b)
 		while ((*a)->content != (get_last(a))->content)
 			ft_rotate(a, 'a');
 	}
-	if (!sorted(*a))
+	if (!sorted(a))
 	{
 		ft_push(a, b, 'a');
 		sort_3(a);
@@ -83,7 +86,7 @@ void	sort_5(t_stack **a, t_stack **b)
 		while ((*a)->content != (get_last(a))->content)
 			ft_rotate(a, 'a');
 	}
-	if (!sorted(*a))
+	if (!sorted(a))
 	{
 		ft_push(b, a, 'b');
 		sort_4(a, b);
@@ -97,7 +100,7 @@ void	radix_sorting(t_stack	**a, t_stack	**b)
 	int	bit;
 
 	bit = 0;
-	while (!sorted(*a))
+	while (!sorted(a) )
 	{
 		lenght = len(a);
 		while (lenght--)

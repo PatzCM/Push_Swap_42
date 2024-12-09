@@ -31,15 +31,15 @@ i = 0;
 	stack_b = ft_stack_init(numbers, 0, argc);
 	ft_index(&stack_a);
 	ft_size_choice(&stack_a, &stack_b);
+	/*while (stack_a)*/
+	/*{*/
+	/*	printf("content: %ld  ", stack_a->content);*/
+	/*	printf("index: %d\n", stack_a->index);*/
+	/*	stack_a = stack_a->next;*/
+	/*}*/
 	ft_free_numbers(numbers);
 	ft_free_stack(&stack_a);
 	ft_free_stack(&stack_b);
-	while (stack_a)
-	{
-		ft_printf("%d\n", stack_a->content);
-		stack_a = stack_a->next;
-	}
-	
 }
 
 void	ft_size_choice(t_stack **a, t_stack **b)
@@ -48,11 +48,11 @@ void	ft_size_choice(t_stack **a, t_stack **b)
 
 	size = len(a);
 
-	if (size == 3 && !sorted(*a))
+	if (size == 3 && !sorted(a))
 		sort_3(a);
-	else if (size == 4 && !sorted(*a))
+	else if (size == 4 && !sorted(a))
 			sort_4(a, b);
-	else if (size == 5 && !sorted(*a))
+	else if (size == 5 && !sorted(a))
 			sort_5(a, b);
 	else
 		radix_sorting(a, b);
