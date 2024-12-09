@@ -1,6 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_moves.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: palexand <palexand@student.42porto.com>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/09 21:47:50 by palexand          #+#    #+#             */
+/*   Updated: 2024/12/09 21:47:55 by palexand         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "../push_swap.h"
-// create a function that swaps the first two elements of a stack;
-// do nothing if there is only one or no elements.
+
 void	ft_swap(t_stack **stack, char c)
 {
 	int		temp;
@@ -16,26 +26,22 @@ void	ft_swap(t_stack **stack, char c)
 		ft_printf("ss\n");
 }
 
-void ft_ss(t_stack **stack_a, t_stack **stack_b)
+void	ft_ss(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_swap(stack_a, 's');
 	ft_swap(stack_b, ' ');
 }
 
-// function that pushes the first element of a stack to the other stack;
-// do nothing if the stack is empty.
-// not allowed to use -> prev
-
-void ft_push(t_stack **stack_a, t_stack **stack_b, char c)
+void	ft_push(t_stack **source, t_stack **dest, char c)
 {
 	t_stack	*temp;
-	
-	if (!*stack_a)
+
+	if (!*source)
 		return ;
-	temp = *stack_a;
-	*stack_a = (*stack_a)->next;
-	temp->next = *stack_b;
-	*stack_b = temp;
+	temp = *source;
+	*source = (*source)->next;
+	temp->next = *dest;
+	*dest = temp;
 	if (c == 'a')
 		ft_printf("pa\n");
 	else if (c == 'b')
@@ -45,17 +51,15 @@ void ft_push(t_stack **stack_a, t_stack **stack_b, char c)
 // function that rotates the stack by shifting up all elements by 1;
 // the first element becomes the last one.
 
-void ft_rotate(t_stack **stack, char c)
+void	ft_rotate(t_stack **stack, char c)
 {
-	if (!*stack || !(*stack)->next || !stack)
-		return ;
-
 	t_stack	*temp;
 	t_stack	*head;
 
+	if (!*stack || !(*stack)->next || !stack)
+		return ;
 	head = *stack;
 	temp = (*stack)->next;
-
 	while (head->next)
 		head = head->next;
 	head->next = *stack;
@@ -69,27 +73,17 @@ void ft_rotate(t_stack **stack, char c)
 		ft_printf("rr\n");
 }
 
-void ft_rr(t_stack **stack_a, t_stack **stack_b)
-{
-	ft_rotate(stack_a, 'r');
-	ft_rotate(stack_b, ' ');
-}
-
-// function that rotates the stack by shifting down all elements by 1; 
-// the last element becomes the first one.
-
-void ft_reverse_rotate(t_stack **stack, char c)
+void	ft_reverse_rotate(t_stack **stack, char c)
 {
 	t_stack	*temp;
 	t_stack	*head;
 
 	head = *stack;
 	temp = *stack;
-
-		while (temp->next->next)
-			temp = temp->next;
-		while (head->next)
-			head = head->next;
+	while (temp->next->next)
+		temp = temp->next;
+	while (head->next)
+		head = head->next;
 	head->next = *stack;
 	temp->next = NULL;
 	*stack = head;
@@ -97,10 +91,6 @@ void ft_reverse_rotate(t_stack **stack, char c)
 		ft_printf("rra\n");
 	else if (c == 'b')
 		ft_printf("rrb\n");
-}
-
-void ft_rrr(t_stack **stack_a, t_stack **stack_b)
-{
-	ft_reverse_rotate(stack_a, 'r');
-	ft_reverse_rotate(stack_b, ' ');
+	else if (c == 'r')
+		ft_printf("rrr\n");
 }

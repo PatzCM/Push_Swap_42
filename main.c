@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 		numbers = fill_numbers(argv, argc);
 	i = 0;
 	if (numbers == NULL || ft_error_check(argc, numbers) == -1 || argc == 0)
-		return (write(2, "Error\n", 6));
+		return (write(2, "Error\n", 6), ft_free_numbers(numbers), 0);
 	stack_a = ft_stack_init(numbers);
 	ft_index(&stack_a, 0, stack_a, stack_a);
 	ft_size_choice(&stack_a, &stack_b);

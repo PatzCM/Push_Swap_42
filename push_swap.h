@@ -57,7 +57,7 @@ void	ft_swap(t_stack **stack, char c);
 void	ft_ss(t_stack **stack_a, t_stack **stack_b);
 void	ft_rotate(t_stack **stack, char c);
 void	ft_rr(t_stack **stack_a, t_stack **stack_b);
-void	ft_push(t_stack **stack_a, t_stack **stack_b, char c);
+void	ft_push(t_stack **source, t_stack **dest, char c);
 void	ft_reverse_rotate(t_stack **stack, char c);
 void	ft_rrr(t_stack **stack_a, t_stack **stack_b);
 

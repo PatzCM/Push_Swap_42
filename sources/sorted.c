@@ -67,9 +67,9 @@ void	sort_4(t_stack **a, t_stack **b)
 	}
 	if (!sorted(a))
 	{
-		ft_push(a, b, 'a');
+		ft_push(a, b, 'b');
 		sort_3(a);
-		ft_push(b, a, 'b');
+		ft_push(b, a, 'a');
 	}
 }
 
@@ -88,9 +88,9 @@ void	sort_5(t_stack **a, t_stack **b)
 	}
 	if (!sorted(a))
 	{
-		ft_push(b, a, 'b');
+		ft_push(a, b, 'b');
 		sort_4(a, b);
-		ft_push(a, b, 'a');
+		ft_push(b, a, 'a');
 	}
 }
 
@@ -100,7 +100,7 @@ void	radix_sorting(t_stack	**a, t_stack	**b)
 	int	bit;
 
 	bit = 0;
-	while (!sorted(a) )
+	while (!sorted(a))
 	{
 		lenght = len(a);
 		while (lenght--)
