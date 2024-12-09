@@ -12,14 +12,13 @@
 
 #include "push_swap.h"
 
-static int	ft_confirm_dups(int argc, char **argv);
-static int	ft_confirm_numbers(int argc, char **argv);
+int	ft_confirm_dups(char **argv);
+int	ft_confirm_numbers(int argc, char **argv);
 
 char	**number_division(int *argc, char **argv)
 {
 	char	**split_numbers;
 	int		len;
-
 	split_numbers = ft_split(argv[1], ' ');
 	len = 0;
 	while (split_numbers[len])
@@ -32,14 +31,14 @@ char	**number_division(int *argc, char **argv)
 int	ft_error_check(int argc, char **argv)
 {
 
-	if (ft_confirm_dups(argc, argv) == -1)
+	if (ft_confirm_dups(argv) == -1)
 		return (-1);
 	if (ft_confirm_numbers(argc, argv) == -1)
 		return (-1);
 	return (0);
 }
 
-static int	ft_confirm_dups(int argc, char **argv)
+int	ft_confirm_dups(char **argv)
 {
 	int	i;
 	int	j;
@@ -61,7 +60,7 @@ static int	ft_confirm_dups(int argc, char **argv)
 	return (0);
 }
 
-static int	ft_confirm_numbers(int argc, char **argv)
+int	ft_confirm_numbers(int argc, char **argv)
 {
 	int	i;
 	int	j;

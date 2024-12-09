@@ -16,17 +16,11 @@ void	ft_swap(t_stack **stack, char c)
 		head = temp;
 	}
 	if (c == 'a')
-	{
 		ft_printf("sa\n");
-	}
 	else if (c == 'b')
-	{
 		ft_printf("sb\n");
-	}
 	else if (c == 's')
-	{
 		ft_printf("ss\n");
-	}
 }
 
 void ft_ss(t_stack **stack_a, t_stack **stack_b)

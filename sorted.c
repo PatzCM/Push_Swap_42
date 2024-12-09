@@ -46,8 +46,8 @@ void	sort_3(t_stack **a)
 		ft_reverse_rotate(a, 'a');
 	else if (middle > bottom && bottom > top)
 	{
-	ft_reverse_rotate(a, 'a');
-	ft_swap(a, 'a');
+		ft_reverse_rotate(a, 'a');
+		ft_swap(a, 'a');
 	}
 	else if (bottom > top && top > middle)
 		ft_swap(a, 'a');

@@ -22,5 +22,5 @@ void ft_free_numbers(char **numbers)
 		free(numbers[i]);
 		i++;
 	}
-
+free(numbers);
 }
