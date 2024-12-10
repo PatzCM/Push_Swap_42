@@ -28,6 +28,8 @@ void	ft_free_numbers(char **numbers)
 	int	i;
 
 	i = 0;
+	if (!numbers)
+		return ;
 	while (numbers[i])
 	{
 		free(numbers[i]);
